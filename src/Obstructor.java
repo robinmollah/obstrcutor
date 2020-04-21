@@ -3,7 +3,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Robot;
 import java.awt.AWTException;
 
-public class HelloWorld{
+public class Obstructor {
     public static void main(String... args) throws AWTException {
         Robot r = new Robot();
 
@@ -16,10 +16,14 @@ public class HelloWorld{
             int base = (int) Math.ceil(Math.random() * 1000);
             r.mouseMove(base, (int) (base * Math.random()));
             timeDif = Math.abs(System.currentTimeMillis() - initTime);
+
             // random keyboard behave
             int randomKey = (int) (65 + (Math.random() * 20));
-            System.out.println("Key: " + randomKey);
-            r.keyPress(randomKey);
+            if((timeDif / 15) % 3 == 0){
+                System.out.println("Key: " + randomKey);
+                r.keyPress(randomKey);
+            }
+
             System.out.println(timeDif);
         }
 
